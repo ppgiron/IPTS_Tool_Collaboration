@@ -34,11 +34,12 @@ def search_github(search_type, query, token=None):
         token (str, optional): GitHub API token
         
     Returns:
-        list: List of dictionaries containing user information
+        tuple: A list of user dictionaries and an optional error message
     """
     if not query:
         logger.warning(f"Empty {search_type} provided")
-        return []
+        # Return a tuple to match the expected return signature
+        return [], "No query provided"
         
     headers = {'Accept': 'application/vnd.github.v3+json'}
     if token:
